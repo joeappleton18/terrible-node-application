@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+	<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+	<nav class="bg-gray-800 p-4 shadow">
+		<div class="container mx-auto flex justify-between items-center">
+			<a href="#" class="text-xl font-semibold text-white">Dashboard</a>
+			<div>
+				<span href="#" class="text-white">
+					<%= username %> (<a href="/logout" class="text-white">Logout</a>)
+				</span>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container mx-auto mt-8">
+		<!-- create a central search bar-->
+		<div class="flex justify-center">
+			<form>
+				<input type="text" name="username"
+					class="w-1/2 px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-400"
+					placeholder="Enter User Name">
+				<button
+					class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Search
+					For A User</button>
+
+			</form>
+		</div>
+	</div>
+	<!-- create a table to display the users -->
+	<div class="container mx-auto mt-8">
+		<table class="w-full border">
+			<thead>
+				<tr>
+					<th class="border px-4 py-2">User Name</th>
+					<th class="border px-4 py-2">Password</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<% if (users?.length> 0) { %>
+					<% users.forEach(user=> { %>
+						<tr>
+							<td class="border px-4 py-2">
+								<%= user.name %>
+							</td>
+							<td class="border px-4 py-2">
+								<%= user.password%>
+							</td>
+						</tr>
+						<% }) %>
+			</tbody>
+			<% } else { %>
+				<tr>
+					<td class="border px-4 py-2" colspan="3">No Users Found</td>
+				</tr>
+				<% } %>
+		</table>
+
+
+
+</body>
+
+</html>
